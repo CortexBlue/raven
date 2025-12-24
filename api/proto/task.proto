@@ -1,0 +1,44 @@
+syntax = "proto3";
+package raven;
+
+option go_package = "github.com/cortexBlue/raven/api/proto";
+
+// TaskQueue service
+service TaskQueue {
+  rpc SubmitTask(SubmitTaskRequest) returns (SubmitTaskResponse);
+  rpc GetTaskStatus(GetTaskStatusRequest) returns (GetTaskStatusResponse);
+}
+
+// Task repesents a unit of work
+message Task {
+  string id = 1;
+  bytes payload = 2;
+  TaskStatus status = 3;
+}
+
+// TaskStatus represents the state of the task
+enum TaskStatus {
+  PENDING = 0;
+  RUNNING = 1;
+  COMPLETED = 2;
+  FAILED = 3;
+}
+
+// SubmitTaskRequest represents the request to create a new task
+message SubmitTaskRequest {
+  bytes payload = 1;
+}
+
+message SubmitTaskResponse {
+  string task_id = 1;
+}
+
+// GetTaskStatusRequest to get status of task
+message GetTaskStatusRequest {
+  string task_id = 1;
+}
+
+// Response with task details
+message GetTaskStatusResponse {
+  Task task = 1;
+}
