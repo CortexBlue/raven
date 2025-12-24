@@ -31,11 +31,11 @@ repos:
             name: go imports
             entry: goimports -w
             language: system
-            files: \.go$
+            files: \*.go$
 
           - id: go-vet
             name: go vet
             entry: go vet
             language: system
-            files: \.go$
+            files: \*.go$
             pass_filenames: false
