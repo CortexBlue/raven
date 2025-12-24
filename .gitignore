@@ -1,1 +1,16 @@
 .zed
+
+# Generated protobuf code
+*.pb.go
+
+# OS
+.DS_Store
+
+# Go
+go.sum
+
+# Binaries
+bin/
+*.exe
+*.test
+*.out
